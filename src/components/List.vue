@@ -18,12 +18,12 @@
     <el-table-column
       prop="tag"
       label="类别"
-      :filters="[{ text: '比赛', value: '比赛' }, { text: '培训', value: '培训' }]"
+      :filters="[{ text: '竞赛', value: '竞赛' }, { text: '培训', value: '培训' }]"
       :filter-method="filterTag"
       filter-placement="bottom-end">
       <template slot-scope="scope">
         <el-tag
-          :type="scope.row.tag === '比赛' ? 'primary' : 'success'"
+          :type="scope.row.tag === '竞赛' ? 'primary' : 'success'"
           close-transition>{{scope.row.tag}}</el-tag>
       </template>
     </el-table-column>
@@ -39,38 +39,15 @@
 </template>
 
 <script>
+import axios from '../services/my-axios'
 export default {
   data () {
     return {
       tableData: [{
         id: '1',
         date: '2016-05-02',
-        name: '比赛名',
-        tag: '比赛'
-      },
-      {
-        id: '2',
-        date: '2016-05-02',
-        name: '比赛名',
-        tag: '培训'
-      },
-      {
-        id: '3',
-        date: '2016-05-02',
-        name: '比赛名',
-        tag: '比赛'
-      },
-      {
-        id: '4',
-        date: '2016-05-02',
-        name: '比赛名',
-        tag: '培训'
-      },
-      {
-        id: '5',
-        date: '2016-05-02',
-        name: '比赛名',
-        tag: '比赛'
+        name: '竞赛名',
+        tag: '竞赛'
       }]
     }
   },
@@ -89,6 +66,20 @@ export default {
       console.log(row.tag)
       this.$router.push({name: 'Detail', params: {id: row.id, type: row.tag}})
     }
+  },
+  mounted () {
+    axios.getList().then(_ => {
+      let arr = []
+      _.data.result.forEach(element => {
+        arr.push({
+          id: element.id,
+          date: element.fabuTime,
+          name: element.name,
+          tag: element.type
+        })
+      })
+      this.tableData = arr
+    })
   }
 }
 </script>
