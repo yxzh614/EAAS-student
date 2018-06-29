@@ -23,8 +23,8 @@ export default {
   data () {
     return {
       form: {
-        memberId: '1503050115',
-        password: '1503050115'
+        memberId: '',
+        password: ''
       }
     }
   },

@@ -1,7 +1,7 @@
 import axios from 'axios'
 export default {
-  baseURL: 'http://192.168.43.189:8080',
-  fileBaseURL: 'http://localhost:63342/',
+  baseURL: 'http://www.echool.cn:8081',
+  fileBaseURL: 'http://www.echool.cn:8081/download',
   getYears () { // 获取共有多少届
     return axios.get('/getths')
   },
@@ -48,7 +48,7 @@ export default {
     return axios.post('/changepassword', formToFormData(data))
   }
 }
-axios.defaults.baseURL = 'http://localhost:8080'
+axios.defaults.baseURL = 'http://www.echool.cn:8081'
 function formToFormData (form) {
   let formData = new FormData()
   for (let e in form) {

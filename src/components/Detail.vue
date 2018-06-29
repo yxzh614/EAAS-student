@@ -70,10 +70,10 @@ export default {
       return this.type === '竞赛'
     },
     fujian1 () {
-      return 'http://localhost:63342/' + this.compDetail.competationFujian1
+      return axios.fileBaseURL + '?path=' + this.compDetail.competationFujian1
     },
     fujian2 () {
-      return 'http://localhost:63342/' + this.compDetail.competationFujian2
+      return axios.fileBaseURL + '?path=' + this.compDetail.competationFujian2
     }
   },
   methods: {
